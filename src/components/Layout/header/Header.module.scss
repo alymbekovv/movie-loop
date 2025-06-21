@@ -1,0 +1,48 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-block: 7px;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(8px);
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      h1 {
+        color: #fff;
+        font-size: 24px;
+      }
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      p {
+        color: #fff;
+      }
+    }
+    .action {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .star {
+        font-size: 23px;
+        color: #fff;
+      }
+    }
+  }
+  &.hide {
+    transform: translateY(-100%);
+  }
+
+  &.show {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,77 @@
+import React, { useEffect, useRef, useState } from "react";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
+import scss from "./Carousel.module.scss";
+import MoviesCart from "../../cart/MoviesCart";
+import { Skeleton } from "@mui/material";
+
+const Carousel = ({ data }) => {
+  const carouselRef = useRef();
+  const [show, setShow] = useState(0);
+  const [lodaing, setLodaing] = useState(true);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const timeout = setTimeout(() => {
+        setLodaing(false);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [data]);
+
+  const scroll = (value) => {
+    const container = carouselRef.current;
+    const amount =
+      value === "left"
+        ? container.scrollLeft - (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
+    container.scrollTo({ left: amount, behavior: "smooth" });
+    setShow(amount);
+    console.log(amount);
+  };
+
+  function skItem() {
+    return (
+      <div style={{ margin: "0 10px", borderRadius: "20px" }}>
+        <Skeleton variant="rectangular" width={210} height={300} />
+        <Skeleton variant="text" width={210} />
+        <Skeleton variant="text" width={140} />
+      </div>
+    );
+  }
+
+  return (
+    <div className={scss.carousel}>
+      <div className={scss.wrapper}>
+        {show >= 1 ? (
+          <BsFillArrowLeftCircleFill
+            onClick={() => scroll("left")}
+            className={`${scss.arrow} ${scss.left}`}
+          />
+        ) : (
+          ""
+        )}
+        {show <= 3000 ? (
+          <BsFillArrowRightCircleFill
+            onClick={() => scroll("right")}
+            className={`${scss.arrow} ${scss.right}`}
+          />
+        ) : (
+          ""
+        )}
+
+        <div ref={carouselRef} className={scss.carouselItems}>
+          {lodaing
+            ? [...Array(6)].map((_, i) => (
+                <React.Fragment key={i}>{skItem()}</React.Fragment>
+              ))
+            : data.map((item, index) => <MoviesCart item={item} key={index} /> )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Carousel;

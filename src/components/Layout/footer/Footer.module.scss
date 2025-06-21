@@ -1,0 +1,41 @@
+.footer {
+  padding-block: 60px;
+  background: hsl(0, 0%, 0%);
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    .explore {
+      color: #fff;
+      display: flex;
+      width: 100%;
+      max-width: 450px;
+      justify-content: space-between;
+      p {
+        font-size: 15px;
+      }
+    }
+    .description {
+      width: 100%;
+      max-width: 750px;
+      text-align: center;
+      p {
+        font-size: 14px;
+        color: #fff;
+        line-height: 25px;
+      }
+    }
+    .iconsWrapper {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .icon {
+        color: #fff;
+      }
+    }
+  }
+}

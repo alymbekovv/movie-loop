@@ -1,0 +1,232 @@
+.details_container {
+  color: white;
+  position: relative;
+  min-height: 700px;
+
+  .content {
+    display: flex;
+    gap: 50px;
+  }
+  .backdrop_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.6), #04152d);
+    z-index: -1;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .backdrop_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+  }
+
+  .detailsImg {
+    height: 500px;
+    img {
+      width: 100%;
+      height: 530px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+  }
+
+  .details_text {
+    .title {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 1rem;
+    }
+
+    .genres {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+
+      span {
+        background: #ff2c6d;
+        padding: 3px 6px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+      }
+    }
+
+    .rating_trailer {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+
+      .rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ratingCircle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .text {
+        width: 70px;
+        height: 70px;
+        background: #04152d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+      }
+
+      .playbtn {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+
+        &:hover .textTriler {
+          color: #ff2c6d;
+        }
+      }
+
+      svg {
+        width: 80px;
+        height: 80px;
+      }
+
+      .circle {
+        fill: transparent;
+        stroke: #ffffff;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 650;
+        stroke-dashoffset: 1300;
+        transition: stroke-dashoffset 0.6s ease-in-out, stroke 0.6s ease-in-out;
+      }
+
+      .playbtn:hover .circle {
+        stroke-dashoffset: 0;
+        stroke: #ff2c6d;
+      }
+
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0; /* Линия полностью рисуется */
+        }
+      }
+
+      .triangle {
+        fill: none;
+        stroke: white;
+        stroke-width: 6;
+        stroke-dasharray: 650;
+        stroke-dashoffset: 1285;
+        transition: stroke-dashoffset 0.6s ease-in-out, stroke 0.6s ease-in-out;
+      }
+
+      .playbtn:hover .triangle {
+        stroke-dashoffset: 0;
+        stroke: #ff2c6d;
+      }
+
+      .textTriler {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.6s ease-in-out;
+      }
+    }
+
+    .overview {
+      margin-bottom: 1rem;
+
+      h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        width: 700px;
+        font-size: 16px;
+        font-weight: 700px;
+        line-height: 1.6;
+        color: #ffffff;
+      }
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .info_item_parent {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 1px solid #1e2d42;
+        padding-bottom: 15px;
+        .info_item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          h6 {
+            font-weight: bold;
+            font-size: 16px;
+          }
+
+          p {
+            color: #828a97;
+            font-weight: 600;
+            font-size: 16px;
+          }
+        }
+      }
+      .info_bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .info_bottom_items {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border-bottom: 1px solid #1e2d42;
+          padding-bottom: 15px;
+          h6 {
+            font-weight: bold;
+            font-size: 16px;
+          }
+
+          p {
+            color: #828a97;
+            font-weight: 600;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
