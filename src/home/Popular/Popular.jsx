@@ -25,7 +25,7 @@ const Popular = () => {
           <SwitchTabs data={tabData} onTabChange={handleTabChange} />
         </div>
       </div>
-      <Carousel data={movies} />
+      <Carousel data={movies} mediaType={mediaType} />
     </div>
   );
 };

@@ -9,13 +9,14 @@ import { Recommend } from "@mui/icons-material";
 import Recommendations from "./carousels/recommendations/Recommendations";
 
 const Details = () => {
-  const { detailsItem, similarMovies } = useMoviesStore();
-  console.log(similarMovies);
+  const { detailsItem } = useMoviesStore();
+  console.log(detailsItem);
+
   return (
     <div>
       <DetailsBanner />
       <Cast actorId={detailsItem.id} api_key={API_KEY} />
-      <VideoSection trailerId={detailsItem.id} api_key={API_KEY} />
+      <VideoSection officialVideosId={detailsItem.id} api_key={API_KEY} />
       <SimilarMovies movieId={detailsItem.id} />
       <Recommendations movieId={detailsItem.id} />
     </div>

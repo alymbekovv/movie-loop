@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import scss from "./actorsDetails.module.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useMoviesStore } from "../../../../store/useMoviesStore";
 import notImg from "../../../../assets/Снимок экрана 2025-06-21 в 15.28.03.png";
 
 const ActorsDetails = () => {
-  const {
-    actorsBio,
-    getActorBio,
-    getActorsMovies,
-    actorMovies,
-  } = useMoviesStore();
+  const { actorsBio, getActorBio, getActorsMovies, actorMovies } =
+    useMoviesStore();
   const { id } = useParams();
   const [showFullBio, setShowFullBio] = useState(false);
 
@@ -64,14 +60,16 @@ const ActorsDetails = () => {
               <div className={scss.fameFor_list}>
                 {actorMovies.map((item) => (
                   <div key={item.id}>
-                    <img
-                      src={
-                        item.backdrop_path
-                          ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2//${item.backdrop_path}`
-                          : `${notImg}`
-                      }
-                      alt=""
-                    />
+                    <Link to={`/details/${item.id}`}>
+                      <img
+                        src={
+                          item.backdrop_path
+                            ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2//${item.backdrop_path}`
+                            : `${notImg}`
+                        }
+                        alt=""
+                      />
+                    </Link>
                     <h4>{item.title}</h4>
                   </div>
                 ))}

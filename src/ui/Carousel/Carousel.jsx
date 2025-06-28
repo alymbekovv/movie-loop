@@ -16,7 +16,7 @@ const Carousel = ({ data }) => {
     if (data && data.length > 0) {
       const timeout = setTimeout(() => {
         setLodaing(false);
-      }, 500);
+      }, 1000);
       return () => clearTimeout(timeout);
     }
   }, [data]);
@@ -35,9 +35,15 @@ const Carousel = ({ data }) => {
   function skItem() {
     return (
       <div style={{ margin: "0 10px", borderRadius: "20px" }}>
-        <Skeleton variant="rectangular" width={210} height={300} />
-        <Skeleton variant="text" width={210} />
-        <Skeleton variant="text" width={140} />
+        <Skeleton
+          variant="rectangular"
+          width={230}
+          height={320}
+          animation="wave"
+          sx={{ background: "#2d2d2q", borderRadius: "20px" }}
+        />
+        <Skeleton variant="text" width={210} animation="wave" />
+        <Skeleton variant="text" width={140} animation="wave" />
       </div>
     );
   }
@@ -67,7 +73,7 @@ const Carousel = ({ data }) => {
             ? [...Array(6)].map((_, i) => (
                 <React.Fragment key={i}>{skItem()}</React.Fragment>
               ))
-            : data.map((item, index) => <MoviesCart item={item} key={index} /> )}
+            : data.map((item, index) => <MoviesCart item={item} key={index} />)}
         </div>
       </div>
     </div>

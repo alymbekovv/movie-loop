@@ -5,6 +5,7 @@ import ProfileMenu from "../../../authentication/ProfileMenu/ProfileMenu";
 import { IconButton } from "@mui/material";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -30,11 +31,18 @@ const Header = () => {
       <div className="container">
         <div className={scss.content}>
           <div className={scss.logo}>
-            <h1>MovieLoop</h1>
+            <Link to="/">
+              <h1>MovieLoop</h1>
+            </Link>
           </div>
           <nav className={scss.nav}>
-            <p>Movies</p>
-            <p>TV Show</p>
+            <Link to="/movies">
+              <p>Movies</p>
+            </Link>
+
+            <Link to="/TVshow"> 
+              <p>TV Show</p>
+            </Link>
             <p>Series</p>
           </nav>
           <div className={scss.action}>

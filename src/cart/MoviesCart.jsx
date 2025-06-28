@@ -1,6 +1,7 @@
 import React from "react";
 import scss from "./MoviesCart.module.scss";
 import { Link } from "react-router-dom";
+import notImg from "../assets/Снимок экрана 2025-06-21 в 15.28.03.png";
 
 const MoviesCart = ({ item }) => {
   const rating = item.vote_average?.toFixed(1) || 0;
@@ -19,7 +20,11 @@ const MoviesCart = ({ item }) => {
       <div className={scss.card}>
         <img
           className={scss.poster}
-          src={`https://media.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`}
+          src={
+            item.poster_path
+              ? `https://media.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`
+              : notImg
+          }
           alt={item.title}
         />
         <div className={scss.info}>
@@ -33,8 +38,10 @@ const MoviesCart = ({ item }) => {
               <span className={scss.text}>{rating}</span>
             </div>
           </div>
-          <div className={scss.title}>{item.title}</div>
-          <div className={scss.date}>{item.release_date}</div>
+          <div className={scss.title}>{item.title || item.name}</div>
+          <div className={scss.date}>
+            {item.release_date || item.first_air_date}
+          </div>
         </div>
       </div>
     </Link>

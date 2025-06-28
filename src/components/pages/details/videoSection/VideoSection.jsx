@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import scss from "./videoSection.module.scss";
 import { useMoviesStore } from "../../../../store/useMoviesStore";
 
-const VideoSection = ({ trailerId, api_key }) => {
-  const { trailer, getTrailer } = useMoviesStore();
+const VideoSection = ({ officialVideosId, api_key }) => {
+  const { officialVideos, getOfficialVideos } = useMoviesStore();
 
   const [openWindow, setOpenWindow] = useState(false);
   const [vidoeKey, setVideoKey] = useState("");
@@ -14,8 +14,8 @@ const VideoSection = ({ trailerId, api_key }) => {
   };
 
   useEffect(() => {
-    getTrailer(trailerId);
-  }, [trailerId, api_key]);
+    getOfficialVideos(officialVideosId);
+  }, [officialVideosId, api_key]);
 
   return (
     <div className={scss.trailer_container}>
@@ -23,7 +23,7 @@ const VideoSection = ({ trailerId, api_key }) => {
         <h2 className={scss.title}>Official Videos</h2>
         <div className={scss.scrollWrapper}>
           <div className={scss.trailer_list}>
-            {trailer.map((item) => (
+            {officialVideos.map((item) => (
               <div key={item.id}>
                 <img
                   src={`https://img.youtube.com/vi/${item.key}/mqdefault.jpg`}
@@ -54,10 +54,7 @@ const VideoSection = ({ trailerId, api_key }) => {
       </div>
       {openWindow && (
         <div className={scss.modalOverlay} onClick={() => setOpenWindow(false)}>
-          <div
-            className={scss.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className={scss.modalContent}>
             <iframe
               src={`https://www.youtube.com/embed/${vidoeKey}?autoplay=1`}
               title="YouTube video player"

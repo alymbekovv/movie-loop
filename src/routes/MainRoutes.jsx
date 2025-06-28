@@ -4,6 +4,8 @@ import HomeBanner from "../home/HomeBanner/HomeBanner";
 import Home from "../home/Home";
 import Details from "../components/pages/details/Details";
 import ActorsDetails from "../components/pages/details/actorsDetails/ActorsDetails";
+import Movies from "../components/pages/movies/Movies";
+import TvShow from "../components/pages/tvShow/TvShow";
 
 const MainRoutes = () => {
   const routes = [
@@ -18,6 +20,14 @@ const MainRoutes = () => {
     {
       link: "/actorsDetails/:id",
       element: <ActorsDetails />,
+    },
+    {
+      link: "/movies",
+      element: <Movies />,
+    },
+    {
+      link: "/TVshow",
+      element: <TvShow />,
     },
   ];
   return (

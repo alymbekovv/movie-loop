@@ -9,12 +9,13 @@ export const useMoviesStore = create((set) => ({
   moviesRated: [],
   topCast: [],
   detailsItem: [],
-  loader: false,
   trailer: [],
+  officialVideos: [],
   actorsBio: [],
   actorMovies: [],
   similarMovies: [],
   recommendMovies: [],
+  loader: false,
 
   getTrending: async (timeWindow = "day") => {
     set({ loader: true });
@@ -32,12 +33,15 @@ export const useMoviesStore = create((set) => ({
   getPopular: async (mediaType = "movie") => {
     set({ loader: true });
     try {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${API_KEY}&language=en-US&page=1`
-      );
+      const url =
+        mediaType === "tv"
+          ? `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&language=en-US&page=1`
+          : `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+      const { data } = await axios.get(url);
       set({ movies: data.results, loader: false });
     } catch (error) {
-      console.error("Error fetching popular popular:", error);
+      console.error("Error fetching data:", error);
       set({ loader: false });
     }
   },
@@ -81,15 +85,31 @@ export const useMoviesStore = create((set) => ({
     }
   },
 
-  getTrailer: async (trailerId) => {
+  getTrailer: async (movieId) => {
     set({ loader: true });
     try {
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${trailerId}/videos?api_key=${API_KEY}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
       );
-      set({ trailer: data.results, loader: false });
+      const trailer = data.results.find(
+        (video) => video.type === "Trailer" && video.site === "YouTube"
+      );
+      set({ trailer, loader: false });
     } catch (error) {
       console.error("Error fetching trailer:", error);
+      set({ loader: false });
+    }
+  },
+
+  getOfficialVideos: async (officialVideosId) => {
+    set({ loader: true });
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/movie/${officialVideosId}/videos?api_key=${API_KEY}&language=en-US`
+      );
+      set({ officialVideos: data.results, loader: false });
+    } catch (error) {
+      console.error("Error fetching officialVideos:", error);
       set({ loader: false });
     }
   },
