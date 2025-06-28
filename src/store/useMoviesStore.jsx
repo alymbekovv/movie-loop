@@ -1,10 +1,9 @@
 import axios from "axios";
 import { create } from "zustand";
 import { API_KEY } from "../api/api";
-import { Recommend } from "@mui/icons-material";
 
-export const useMoviesStore = create((set) => ({
-  movies: [],
+export const useMoviesStore = create((set, get) => ({
+  moviesPopular: [],
   moviesTrending: [],
   moviesRated: [],
   topCast: [],
@@ -15,7 +14,11 @@ export const useMoviesStore = create((set) => ({
   actorMovies: [],
   similarMovies: [],
   recommendMovies: [],
+  movies: [],
+  page: 1,
+  More: true,
   loader: false,
+  genre: [],
 
   getTrending: async (timeWindow = "day") => {
     set({ loader: true });
@@ -39,9 +42,9 @@ export const useMoviesStore = create((set) => ({
           : `https://api.themoviedb.org/3/${mediaType}/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
       const { data } = await axios.get(url);
-      set({ movies: data.results, loader: false });
+      set({ moviesPopular: data.results, loader: false });
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching moviesPopular:", error);
       set({ loader: false });
     }
   },
@@ -162,6 +165,53 @@ export const useMoviesStore = create((set) => ({
     } catch (error) {
       console.error("Error fetching similar movies:", error);
       set({ loader: false });
+    }
+  },
+
+  getSortedMovies: async (
+    selectedGenre = "",
+    selectedSort = "",
+    reset = false
+  ) => {
+    const { page, movies } = get();
+    const nextPage = reset ? 1 : page;
+
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&page=${nextPage}`;
+
+    if (selectedGenre) {
+      url += `&with_genres=${selectedGenre}`;
+    }
+
+    if (selectedSort) {
+      url += `&sort_by=${selectedSort}`;
+    }
+
+    try {
+      const res = await axios.get(url);
+      const newMovies = res.data.results;
+
+      set({
+        movies: reset ? newMovies : [...movies, ...newMovies],
+        page: nextPage + 1,
+        More: newMovies.length > 0,
+      });
+    } catch (err) {
+      console.error("Error loading movies", err);
+    } finally {
+      set({ loader: false });
+    }
+  },
+
+  getGenres: async () => {
+    set({ loader: true });
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
+      );
+      set({ genre: data.genres, loader: false });
+    } catch (error) {
+      console.log("Error fetching", error);
+      console.log({ loader: false });
     }
   },
 }));

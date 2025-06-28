@@ -7,7 +7,7 @@ import scss from "./Carousel.module.scss";
 import MoviesCart from "../../cart/MoviesCart";
 import { Skeleton } from "@mui/material";
 
-const Carousel = ({ data }) => {
+const Carousel = ({ data, genre }) => {
   const carouselRef = useRef();
   const [show, setShow] = useState(0);
   const [lodaing, setLodaing] = useState(true);
@@ -73,7 +73,9 @@ const Carousel = ({ data }) => {
             ? [...Array(6)].map((_, i) => (
                 <React.Fragment key={i}>{skItem()}</React.Fragment>
               ))
-            : data.map((item, index) => <MoviesCart item={item} key={index} />)}
+            : data.map((item, index) => (
+                <MoviesCart item={item} key={index} genre={genre} />
+              ))}
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import Carousel from "../../ui/Carousel/Carousel";
 import SwitchTabs from "../../ui/SwitchTabs/SwitchTabs";
 
 const Popular = () => {
-  const { getPopular, movies } = useMoviesStore();
+  const { getPopular, moviesPopular, genre } = useMoviesStore();
 
   const [mediaType, setMediaType] = useState("movie");
 
@@ -25,7 +25,7 @@ const Popular = () => {
           <SwitchTabs data={tabData} onTabChange={handleTabChange} />
         </div>
       </div>
-      <Carousel data={movies} mediaType={mediaType} />
+      <Carousel data={moviesPopular} mediaType={mediaType} genre={genre} />
     </div>
   );
 };

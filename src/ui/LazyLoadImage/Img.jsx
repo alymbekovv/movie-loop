@@ -3,7 +3,7 @@ import { useMoviesStore } from "../../store/useMoviesStore";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Img = () => {
-  const { movies, getPopular } = useMoviesStore();
+  const { moviesPopular, getPopular } = useMoviesStore();
 
   useEffect(() => {
     getPopular();
@@ -12,10 +12,10 @@ const Img = () => {
   const imageBaseURL = "https://image.tmdb.org/t/p/original";
 
   const randomMovie = useMemo(() => {
-    if (movies.length === 0) return null;
-    const index = Math.floor(Math.random() * movies.length);
-    return movies[index];
-  }, [movies]);
+    if (moviesPopular.length === 0) return null;
+    const index = Math.floor(Math.random() * moviesPopular.length);
+    return moviesPopular[index];
+  }, [moviesPopular]);
 
   if (!randomMovie?.backdrop_path) return null;
 

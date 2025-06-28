@@ -1,0 +1,134 @@
+.moviesContainer {
+  padding-block: 100px;
+
+  .explore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    h4 {
+      color: #e6e6e6;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .select_content {
+      display: flex;
+      gap: 16px;
+
+      select {
+            padding: 10px 14px;
+            background-color: #121212;
+            color: #eaeaea;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 400;
+            appearance: none;
+            outline: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+
+        &:hover,
+        &:focus {
+          border-color: #00ffaa;
+          box-shadow: 0 0 5px #00ffaa40;
+        }
+      }
+    }
+  }
+
+  .content {
+    .list {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        width: 235px;
+        height: 440px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 16px;
+      }
+
+      .genreDot {
+        background-color: #da2f68;
+        border-radius: 5px;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .poster {
+        width: 235px;
+        height: 500px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+      }
+
+      .info {
+        height: 100px;
+        padding: 8px;
+        margin-top: 20px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 70px;
+        left: 15px;
+      }
+
+      .ratingCircle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .text {
+        background: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .title {
+        max-width: 230px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .date {
+        font-size: 11px;
+        font-weight: 600;
+        color: gray;
+      }
+    }
+  }
+}
