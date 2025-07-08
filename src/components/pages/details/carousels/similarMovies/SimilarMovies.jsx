@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useMoviesStore } from "../../../../../store/useMoviesStore";
 import Carousel from "../../../../../ui/Carousel/Carousel";
 
-const SimilarMovies = ({ movieId }) => {
+const SimilarMovies = ({ movieId, type }) => {
   const { getSimilarMovies, similarMovies } = useMoviesStore();
 
   useEffect(() => {
     if (movieId) {
-      getSimilarMovies(movieId);
+      getSimilarMovies(movieId, type);
     }
   }, [movieId]);
   return (

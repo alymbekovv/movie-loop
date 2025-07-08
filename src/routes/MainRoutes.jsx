@@ -17,7 +17,7 @@ const MainRoutes = () => {
       element: <Home />,
     },
     {
-      link: "/details/:id",
+      link: "/details/:type/:id",
       element: <Details />,
     },
     {

@@ -11,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 50px;
     .logo {
       h1 {
         color: #fff;
@@ -20,14 +21,12 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 28px;
       p {
         color: #fff;
       }
     }
     .action {
-      width: 100%;
-      max-width: 600px;
       display: flex;
       align-items: center;
       gap: 8px;

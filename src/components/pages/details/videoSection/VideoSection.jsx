@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import scss from "./videoSection.module.scss";
 import { useMoviesStore } from "../../../../store/useMoviesStore";
 
-const VideoSection = ({ officialVideosId, api_key }) => {
+const VideoSection = ({ officialVideosId, api_key, type }) => {
   const { officialVideos, getOfficialVideos } = useMoviesStore();
 
   const [openWindow, setOpenWindow] = useState(false);
@@ -14,7 +14,7 @@ const VideoSection = ({ officialVideosId, api_key }) => {
   };
 
   useEffect(() => {
-    getOfficialVideos(officialVideosId);
+    getOfficialVideos(officialVideosId, type);
   }, [officialVideosId, api_key]);
 
   return (

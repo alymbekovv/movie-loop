@@ -88,7 +88,7 @@ const Movies = () => {
               return (
                 <Link
                   style={{ textDecoration: "none" }}
-                  to={`/details/${item.id}`}
+                  to={`/details/${item.media_type || "movie"}/${item.id}`}
                 >
                   <div className={scss.card}>
                     <img

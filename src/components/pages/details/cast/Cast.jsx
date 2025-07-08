@@ -3,11 +3,11 @@ import scss from "./cast.module.scss";
 import { useMoviesStore } from "../../../../store/useMoviesStore";
 import { Link } from "react-router-dom";
 
-const Cast = ({ actorId, api_key }) => {
+const Cast = ({ actorId, api_key, type }) => {
   const { topCast, getTopCast } = useMoviesStore();
 
   useEffect(() => {
-    getTopCast(actorId);
+    getTopCast(actorId, type);
   }, [actorId, api_key]);
 
   return (

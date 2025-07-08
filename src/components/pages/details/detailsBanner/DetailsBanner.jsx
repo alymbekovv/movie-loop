@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const DetailsBanner = () => {
-  const { id } = useParams();
+  const { id, type } = useParams();
   const { detailsItem, getDetailsItems, loader, trailer, getTrailer } =
     useMoviesStore();
 
@@ -21,8 +21,8 @@ const DetailsBanner = () => {
   };
 
   useEffect(() => {
-    getDetailsItems(id);
-    getTrailer(id);
+    getDetailsItems(id, type);
+    getTrailer(id, type);
   }, [id]);
 
   const rating = detailsItem.vote_average?.toFixed(1) || 0;
@@ -97,7 +97,9 @@ const DetailsBanner = () => {
           />
           <div className={scss.backdrop_overlay}></div>
           <div className={scss.details_text}>
-            <h1 className={scss.title}>{detailsItem.title}</h1>
+            <h1 className={scss.title}>
+              {detailsItem.title || detailsItem.name}
+            </h1>
             <p className={scss.tagline}>{detailsItem.tagline}</p>
 
             <div className={scss.genres}>

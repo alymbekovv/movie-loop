@@ -16,6 +16,7 @@ const TopRated = () => {
   const handleTabChange = (tab) => {
     setMediaType(tab === "Movies" ? "movie" : "tv");
   };
+  console.log(mediaType);
 
   return (
     <div className="carouselSection">
@@ -25,7 +26,7 @@ const TopRated = () => {
           <SwitchTabs data={tabData} onTabChange={handleTabChange} />
         </div>
       </div>
-      <Carousel data={moviesRated} />
+      <Carousel data={moviesRated} mediaType={mediaType} />
     </div>
   );
 };

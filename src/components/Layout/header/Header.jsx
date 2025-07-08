@@ -43,15 +43,8 @@ const Header = () => {
             <Link to="/TVshow">
               <p>TV Show</p>
             </Link>
-            <p>Series</p>
           </nav>
           <div className={scss.action}>
-            <Input
-              className={scss.search}
-              placeholder="Search..."
-              prefix={<SearchOutlined />}
-              style={{}}
-            />
             <IconButton>
               <Badge size="small" count={5}>
                 <BookmarksIcon className={scss.star} />

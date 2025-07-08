@@ -7,18 +7,19 @@ import { API_KEY } from "../../../api/api";
 import SimilarMovies from "./carousels/similarMovies/SimilarMovies";
 import { Recommend } from "@mui/icons-material";
 import Recommendations from "./carousels/recommendations/Recommendations";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
   const { detailsItem } = useMoviesStore();
-  console.log(detailsItem);
+  const { type } = useParams();
 
   return (
     <div>
       <DetailsBanner />
-      <Cast actorId={detailsItem.id} api_key={API_KEY} />
-      <VideoSection officialVideosId={detailsItem.id} api_key={API_KEY} />
-      <SimilarMovies movieId={detailsItem.id} />
-      <Recommendations movieId={detailsItem.id} />
+      <Cast actorId={detailsItem.id} type={type} api_key={API_KEY} />
+      <VideoSection officialVideosId={detailsItem.id} type={type} api_key={API_KEY} />
+      <SimilarMovies movieId={detailsItem.id} type={type} />
+      <Recommendations movieId={detailsItem.id} type={type} />
     </div>
   );
 };
