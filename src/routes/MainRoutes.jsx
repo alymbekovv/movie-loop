@@ -6,7 +6,7 @@ import Details from "../components/pages/details/Details";
 import ActorsDetails from "../components/pages/details/actorsDetails/ActorsDetails";
 import Movies from "../components/pages/movies/Movies";
 import TvShow from "../components/pages/tvShow/TvShow";
-import SearchResults from "../components/pages/searchResults/searchResults";
+import SearchResults from "../components/pages/searchResults/SearchResults";
 import SignInPage from "../authentication/signIn/SignInPage";
 import SignUpPage from "../authentication/signUp/SignUpPage";
 
