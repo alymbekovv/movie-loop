@@ -29,7 +29,6 @@ const Carousel = ({ data, genre, mediaType }) => {
         : container.scrollLeft + (container.offsetWidth + 20);
     container.scrollTo({ left: amount, behavior: "smooth" });
     setShow(amount);
-    console.log(amount);
   };
 
   function skItem() {
@@ -74,7 +73,12 @@ const Carousel = ({ data, genre, mediaType }) => {
                 <React.Fragment key={i}>{skItem()}</React.Fragment>
               ))
             : data.map((item, index) => (
-                <MoviesCart item={item} key={index} genre={genre} mediaType={mediaType} />
+                <MoviesCart
+                  item={item}
+                  key={index}
+                  genre={genre}
+                  mediaType={mediaType}
+                />
               ))}
         </div>
       </div>

@@ -16,7 +16,6 @@ const TopRated = () => {
   const handleTabChange = (tab) => {
     setMediaType(tab === "Movies" ? "movie" : "tv");
   };
-  console.log(mediaType);
 
   return (
     <div className="carouselSection">

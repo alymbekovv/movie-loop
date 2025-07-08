@@ -10,8 +10,6 @@ const DetailsBanner = () => {
   const { detailsItem, getDetailsItems, loader, trailer, getTrailer } =
     useMoviesStore();
 
-  console.log(detailsItem);
-
   const [openWindow, setOpenWindow] = useState(false);
   const [vidoeKey, setVideoKey] = useState("");
 

@@ -85,6 +85,7 @@ const TvShow = () => {
 
               return (
                 <Link
+                  key={item.id}
                   style={{ textDecoration: "none" }}
                   to={`/details/${item.media_type || "tv"}/${item.id}`}
                 >

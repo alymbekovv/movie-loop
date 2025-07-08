@@ -16,10 +16,18 @@ const Details = () => {
   return (
     <div>
       <DetailsBanner />
-      <Cast actorId={detailsItem.id} type={type} api_key={API_KEY} />
-      <VideoSection officialVideosId={detailsItem.id} type={type} api_key={API_KEY} />
-      <SimilarMovies movieId={detailsItem.id} type={type} />
-      <Recommendations movieId={detailsItem.id} type={type} />
+      {detailsItem?.id && (
+        <>
+          <Cast actorId={detailsItem.id} type={type} api_key={API_KEY} />
+          <VideoSection
+            officialVideosId={detailsItem.id}
+            type={type}
+            api_key={API_KEY}
+          />
+          <SimilarMovies movieId={detailsItem.id} type={type} />
+          <Recommendations movieId={detailsItem.id} type={type} />
+        </>
+      )}
     </div>
   );
 };
