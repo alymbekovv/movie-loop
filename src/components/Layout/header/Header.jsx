@@ -40,7 +40,7 @@ const Header = () => {
               <p>Movies</p>
             </Link>
 
-            <Link to="/TVshow"> 
+            <Link to="/TVshow">
               <p>TV Show</p>
             </Link>
             <p>Series</p>
@@ -57,7 +57,9 @@ const Header = () => {
                 <BookmarksIcon className={scss.star} />
               </Badge>
             </IconButton>
-            <ProfileMenu />
+            <Link to="/signUp">
+              <ProfileMenu />
+            </Link>
           </div>
         </div>
       </div>

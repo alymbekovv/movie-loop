@@ -15,10 +15,11 @@ export const useMoviesStore = create((set, get) => ({
   similarMovies: [],
   recommendMovies: [],
   movies: [],
-  page: 1,
+   searchPage: 1,
   More: true,
   loader: false,
   genre: [],
+  results: [],
 
   getTrending: async (timeWindow = "day") => {
     set({ loader: true });
@@ -160,7 +161,7 @@ export const useMoviesStore = create((set, get) => ({
     try {
       let { data } =
         await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1
-`);
+  `);
       set({ recommendMovies: data.results, loader: false });
     } catch (error) {
       console.error("Error fetching similar movies:", error);
@@ -212,6 +213,33 @@ export const useMoviesStore = create((set, get) => ({
     } catch (error) {
       console.log("Error fetching", error);
       console.log({ loader: false });
+    }
+  },
+
+  searchMovies: async (query, page = 1, reset = false) => {
+    if (!query) return;
+    set({ loader: true });
+
+    try {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/search/movie`,
+        {
+          params: {
+            api_key: API_KEY,
+            query,
+            language: "en-US",
+            page,
+          },
+        }
+      );
+
+      set((state) => ({
+        results: reset ? data.results : [...state.results, ...data.results],
+        searchPage: page + 1,
+        loader: false,
+      }));
+    } catch (error) {
+      set({ error: error.message, loader: false });
     }
   },
 }));

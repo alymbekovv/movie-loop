@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import notImg from "../assets/Снимок экрана 2025-06-21 в 15.28.03.png";
 
 const MoviesCart = ({ item, genre = [] }) => {
-  const movieGenres = item.genre_ids
-    ?.map((id) => genre.find((g) => g.id === id)?.name)
-    .filter(Boolean)
-    .join(", ");
+  // const movieGenres = item.genre_ids
+  //   ?.map((id) => genre.find((g) => g.id === id)?.name)
+  //   .filter(Boolean)
+  //   .join(", ");
 
   const rating = item.vote_average?.toFixed(1) || 0;
   const percentage = rating * 10;
