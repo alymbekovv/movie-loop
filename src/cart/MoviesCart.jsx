@@ -18,7 +18,7 @@ const MoviesCart = ({ item, mediaType }) => {
   return (
     <Link
       style={{ textDecoration: "none" }}
-      to={`/details/${mediaType || "movie"}/${item.id}`}
+      to={`/details/${item.media_type || mediaType || "movie"}/${item.id}`}
     >
       <div className={scss.card}>
         <img

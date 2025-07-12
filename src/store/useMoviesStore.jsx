@@ -253,7 +253,7 @@ export const useMoviesStore = create((set, get) => ({
     set({ loader: true });
     try {
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/movie`,
+        `https://api.themoviedb.org/3/search/multi`,
         {
           params: {
             api_key: API_KEY,

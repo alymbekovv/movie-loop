@@ -15,7 +15,7 @@ const VideoSection = ({ officialVideosId, api_key, type }) => {
 
   useEffect(() => {
     getOfficialVideos(officialVideosId, type);
-  }, [officialVideosId, api_key]);
+  }, [officialVideosId, api_key, type]);
 
   return (
     <div className={scss.trailer_container}>

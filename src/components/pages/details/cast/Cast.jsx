@@ -8,7 +8,7 @@ const Cast = ({ actorId, api_key, type }) => {
 
   useEffect(() => {
     getTopCast(actorId, type);
-  }, [actorId, api_key]);
+  }, [actorId, api_key, type]);
 
   return (
     <div className={scss.cast_container}>

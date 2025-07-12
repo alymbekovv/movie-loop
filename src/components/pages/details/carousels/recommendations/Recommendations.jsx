@@ -6,10 +6,10 @@ const Recommendations = ({ movieId, type }) => {
   const { recommendMovies, getRecomendMovies } = useMoviesStore();
 
   useEffect(() => {
-    if (movieId) {
+    if (movieId && type) {
       getRecomendMovies(movieId, type);
     }
-  }, [movieId]);
+  }, [movieId, type]);
   return (
     <div className="carouselSection">
       <div className="container">

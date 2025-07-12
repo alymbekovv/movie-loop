@@ -67,19 +67,21 @@ const Carousel = ({ data, genre, mediaType }) => {
           ""
         )}
 
-        <div ref={carouselRef} className={scss.carouselItems}>
-          {lodaing
-            ? [...Array(6)].map((_, i) => (
-                <React.Fragment key={i}>{skItem()}</React.Fragment>
-              ))
-            : data.map((item, index) => (
-                <MoviesCart
-                  item={item}
-                  key={index}
-                  genre={genre}
-                  mediaType={mediaType}
-                />
-              ))}
+        <div className="container">
+          <div ref={carouselRef} className={scss.carouselItems}>
+            {lodaing
+              ? [...Array(6)].map((_, i) => (
+                  <React.Fragment key={i}>{skItem()}</React.Fragment>
+                ))
+              : data.map((item, index) => (
+                  <MoviesCart
+                    item={item}
+                    key={index}
+                    genre={genre}
+                    mediaType={mediaType}
+                  />
+                ))}
+          </div>
         </div>
       </div>
     </div>

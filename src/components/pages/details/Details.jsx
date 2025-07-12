@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Cast from "./cast/Cast";
 import VideoSection from "./videoSection/VideoSection";
@@ -10,8 +10,19 @@ import Recommendations from "./carousels/recommendations/Recommendations";
 import { useParams } from "react-router-dom";
 
 const Details = () => {
-  const { detailsItem } = useMoviesStore();
-  const { type } = useParams();
+  const { detailsItem, getDetailsItems } = useMoviesStore();
+
+  const { id, type } = useParams();
+
+  useEffect(() => {
+    if (!id || !type) return;
+
+    if (type !== "movie" && type !== "tv") return;
+
+    getDetailsItems(id, type);
+  }, [id, type]);
+
+  console.log("DETAILS ID:", detailsItem.id);
 
   return (
     <div>

@@ -9,7 +9,12 @@ const SearchResults = () => {
   const { searchMovies, results, searchPage } = useMoviesStore();
 
   const [visibleCount, setVisibleCount] = useState(5);
-  const visibleMovies = results.slice(0, visibleCount);
+  const filteredResults = results.filter(
+    (item) =>
+      item.media_type !== "person" &&
+      (item.media_type === "movie" || item.media_type === "tv")
+  );
+  const visibleMovies = filteredResults.slice(0, visibleCount);
 
   useEffect(() => {
     if (query) {
@@ -53,7 +58,7 @@ const SearchResults = () => {
 
               return (
                 <Link
-                  to={`/details/${item.id}`}
+                  to={`/details/${item.media_type || "movie"}/${item.id}`}
                   key={item.id}
                   style={{ textDecoration: "none" }}
                 >
@@ -90,7 +95,7 @@ const SearchResults = () => {
               );
             })}
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   );

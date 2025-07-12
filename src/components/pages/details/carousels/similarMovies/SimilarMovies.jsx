@@ -6,10 +6,10 @@ const SimilarMovies = ({ movieId, type }) => {
   const { getSimilarMovies, similarMovies } = useMoviesStore();
 
   useEffect(() => {
-    if (movieId) {
+    if (movieId && type) {
       getSimilarMovies(movieId, type);
     }
-  }, [movieId]);
+  }, [movieId, type]);
   return (
     <div className="carouselSection">
       <div className="container">
@@ -17,7 +17,7 @@ const SimilarMovies = ({ movieId, type }) => {
           <span className="carouselTitle">Similar Movies</span>
         </div>
       </div>
-      <Carousel data={similarMovies} />
+      <Carousel data={similarMovies} mediaType={type} />
     </div>
   );
 };

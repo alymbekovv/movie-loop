@@ -21,7 +21,7 @@ const DetailsBanner = () => {
   useEffect(() => {
     getDetailsItems(id, type);
     getTrailer(id, type);
-  }, [id]);
+  }, [id, type]);
 
   const rating = detailsItem.vote_average?.toFixed(1) || 0;
   const percentage = rating * 10;
