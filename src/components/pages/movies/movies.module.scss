@@ -19,18 +19,18 @@
       gap: 16px;
 
       select {
-            padding: 10px 14px;
-            background-color: #121212;
-            color: #eaeaea;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 400;
-            appearance: none;
-            outline: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            position: relative;
+        padding: 10px 14px;
+        background-color: #121212;
+        color: #eaeaea;
+        border: 1px solid #2a2a2a;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        appearance: none;
+        outline: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        position: relative;
 
         &:hover,
         &:focus {
@@ -44,34 +44,21 @@
   .content {
     .list {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
       flex-wrap: wrap;
 
       .card {
-        display: flex;
-        flex-direction: column;
-        width: 235px;
-        height: 440px;
+        width: 230px;
+        height: 430px;
         overflow: hidden;
         position: relative;
-        border-radius: 16px;
-      }
-
-      .genreDot {
-        background-color: #da2f68;
-        border-radius: 5px;
-        padding: 2px 6px;
-        font-size: 12px;
-        font-weight: 600;
-        color: white;
-        text-transform: uppercase;
-        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
       }
 
       .poster {
-        width: 235px;
-        height: 500px;
+        width: 100%;
+        max-width: 230px;
         object-fit: cover;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         border-radius: 16px;

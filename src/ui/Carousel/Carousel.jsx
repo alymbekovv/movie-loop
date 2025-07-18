@@ -25,8 +25,8 @@ const Carousel = ({ data, genre, mediaType }) => {
     const container = carouselRef.current;
     const amount =
       value === "left"
-        ? container.scrollLeft - (container.offsetWidth + 20)
-        : container.scrollLeft + (container.offsetWidth + 20);
+        ? container.scrollLeft - (container.offsetWidth + 10)
+        : container.scrollLeft + (container.offsetWidth + 10);
     container.scrollTo({ left: amount, behavior: "smooth" });
     setShow(amount);
   };

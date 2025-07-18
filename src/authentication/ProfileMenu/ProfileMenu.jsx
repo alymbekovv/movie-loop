@@ -35,7 +35,7 @@ export default function ProfileMenu() {
     <Box display="flex" alignItems="center" gap={1}>
       <IconButton onClick={handleClick}>
         <Avatar
-          src="https://lh3.googleusercontent.com/a/ACg8ocI_D9NXW_k-wW-vpXH84r4vr4p2ssZcoiBOxaCS0n-AK8IwPUs=s576-c-no"
+          src="https://pt.quizur.com/_image?href=https://img.quizur.com/f/img62d99a27ec60e9.67165220.png?lastEdited=1658427975&w=600&h=600&f=webp"
           sx={{ width: 43, height: 43 }}
         />
         <Box
@@ -47,13 +47,13 @@ export default function ProfileMenu() {
           ml={1.5}
         >
           <Typography sx={{ color: "#fff", fontSize: "14px" }} fontWeight="600">
-            Islam Aubakirov
+            Alymbek Askatov
           </Typography>
           <Typography
             sx={{ color: "#fff", fontSize: "13px" }}
             color="text.secondary"
           >
-            islamdev404@gmail.com
+           alymbek07@gmail.com
           </Typography>
         </Box>
         {open ? (
@@ -83,18 +83,18 @@ export default function ProfileMenu() {
           <Box display="flex" alignItems="center">
             <Avatar
               sx={{ width: 43, height: 43 }}
-              src="https://lh3.googleusercontent.com/a/ACg8ocI_D9NXW_k-wW-vpXH84r4vr4p2ssZcoiBOxaCS0n-AK8IwPUs=s576-c-no"
+              src="https://pngate.com/wp-content/uploads/2023/11/Gigachad-stares-into-the-camera-with-a-bare-torso.png"
             />
             <Box ml={1.5}>
-              <Typography sx={{ color: "#fff" }} fontWeight="bold">
-                islamdev
+              <Typography sx={{ color: "#000" }} fontWeight="bold">
+                Alymbek Askatov
               </Typography>
               <Typography
-                sx={{ color: "#fff" }}
+                sx={{ color: "#000" }}
                 variant="body2"
                 color="text.secondary"
               >
-                islamdev404@gmail.com
+                alymbek07@gmail.com
               </Typography>
             </Box>
           </Box>

@@ -1,17 +1,16 @@
 .searchContainer {
-    padding-block: 100px;
+  padding-block: 100px;
   .content {
     .list {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
       flex-wrap: wrap;
 
       .card {
         display: flex;
         flex-direction: column;
-        width: 235px;
-        height: 440px;
+        width: 230px;
+        height: 430px;
         overflow: hidden;
         position: relative;
         border-radius: 16px;
