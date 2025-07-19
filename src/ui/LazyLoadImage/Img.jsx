@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMoviesStore } from "../../store/useMoviesStore";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import scss from "./img.module.scss"; // создадим CSS Module
+import scss from "./img.module.scss";
 
 const Img = () => {
   const { moviesPopular, getPopular } = useMoviesStore();
