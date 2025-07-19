@@ -27,10 +27,10 @@ const SignUpPage = () => {
             required
           />
           <i className="bx bxs-user"></i>
+          {formState.errors.email && (
+            <p className={scss.error}>{formState.errors.email.message}</p>
+          )}
         </div>
-        {formState.errors.email && (
-          <p className={scss.error}>{formState.errors.email.message}</p>
-        )}
 
         <div className={scss.inputBox}>
           <input

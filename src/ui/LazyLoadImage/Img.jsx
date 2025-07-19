@@ -1,13 +1,15 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useMoviesStore } from "../../store/useMoviesStore";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import scss from "./img.module.scss"; // создадим CSS Module
 
 const Img = () => {
   const { moviesPopular, getPopular } = useMoviesStore();
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     getPopular();
-  }, []);
+  }, [getPopular]);
 
   const imageBaseURL = "https://image.tmdb.org/t/p/original";
 
@@ -22,13 +24,16 @@ const Img = () => {
   const imageUrl = `${imageBaseURL}${randomMovie.backdrop_path}`;
 
   return (
-    <LazyLoadImage
-      style={{ objectFit: "cover", backgroundPosition: "center" }}
-      alt=""
-      height="600px"
-      src={imageUrl}
-      width="100%"
-    />
+    <div className={`${scss.imageWrapper} ${loaded ? scss.loaded : ""}`}>
+      <LazyLoadImage
+        afterLoad={() => setLoaded(true)}
+        alt={randomMovie.title || "Movie"}
+        height="660px"
+        src={imageUrl}
+        width="100%"
+        style={{ objectFit: "cover" }}
+      />
+    </div>
   );
 };
 
