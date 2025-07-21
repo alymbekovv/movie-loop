@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMoviesStore } from "../../store/useMoviesStore";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import scss from "../LazyLoadImage/img.module.scss";
+import scss from "./Img.module.scss";
 
 const Img = () => {
   const { moviesPopular, getPopular } = useMoviesStore();
@@ -27,7 +27,7 @@ const Img = () => {
     <div className={`${scss.imageWrapper} ${loaded ? scss.loaded : ""}`}>
       <LazyLoadImage
         afterLoad={() => setLoaded(true)}
-        alt={randomMovie.title || "Movie"}
+        alt={randomMovie.title || randomMovie.name}
         height="660px"
         src={imageUrl}
         width="100%"
