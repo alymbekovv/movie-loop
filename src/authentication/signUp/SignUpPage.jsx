@@ -139,12 +139,12 @@ const SignUpPage = () => {
           Continue with Google
         </button>
 
-        <div className={scss.registerLink}>
+        {/* <div className={scss.registerLink}>
           <p>
             Already have an account?
             <a href="#"> Sign in</a>
           </p>
-        </div>
+        </div> */}
       </form>
     </div>
   );
