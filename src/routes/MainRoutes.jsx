@@ -40,6 +40,10 @@ const MainRoutes = () => {
       link: "/signUp",
       element: <SignUpPage />,
     },
+    {
+      link: "/signIn",
+      element: <SignInPage />,
+    },
   ];
   return (
     <div>

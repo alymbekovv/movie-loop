@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useAuthStore } from "../../store/useAuthStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const navivgate = useNavigate();
@@ -139,12 +139,12 @@ const SignUpPage = () => {
           Continue with Google
         </button>
 
-        {/* <div className={scss.registerLink}>
+        <div className={scss.registerLink}>
           <p>
             Already have an account?
-            <a href="#"> Sign in</a>
+            <Link to="/signIn">Sign in</Link>
           </p>
-        </div> */}
+        </div>
       </form>
     </div>
   );
