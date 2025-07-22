@@ -1,4 +1,3 @@
-// ProfileMenu.jsx
 import React, { useState } from "react";
 import {
   Avatar,
@@ -13,10 +12,16 @@ import {
 import LogoutIcon from "@mui/icons-material/Logout";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { useAuthStore } from "../../store/useAuthStore";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 export default function ProfileMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const user = useAuthStore((state) => state.user);
+  console.log(user);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,7 +40,7 @@ export default function ProfileMenu() {
     <Box display="flex" alignItems="center" gap={1}>
       <IconButton onClick={handleClick}>
         <Avatar
-          src="https://pt.quizur.com/_image?href=https://img.quizur.com/f/img62d99a27ec60e9.67165220.png?lastEdited=1658427975&w=600&h=600&f=webp"
+          src={user?.photoURL || "https://default-avatar-url.com"}
           sx={{ width: 43, height: 43 }}
         />
         <Box
@@ -47,13 +52,13 @@ export default function ProfileMenu() {
           ml={1.5}
         >
           <Typography sx={{ color: "#fff", fontSize: "14px" }} fontWeight="600">
-            Alymbek Askatov
+            {user?.displayName || "No name"}
           </Typography>
           <Typography
             sx={{ color: "#fff", fontSize: "13px" }}
             color="text.secondary"
           >
-           alymbek07@gmail.com
+            {user?.email || "No email"}
           </Typography>
         </Box>
         {open ? (
@@ -83,18 +88,18 @@ export default function ProfileMenu() {
           <Box display="flex" alignItems="center">
             <Avatar
               sx={{ width: 43, height: 43 }}
-              src="https://pngate.com/wp-content/uploads/2023/11/Gigachad-stares-into-the-camera-with-a-bare-torso.png"
+              src={user?.photoURL || "https://default-avatar-url.com"}
             />
             <Box ml={1.5}>
               <Typography sx={{ color: "#000" }} fontWeight="bold">
-                Alymbek Askatov
+                {user?.displayName || "No name"}
               </Typography>
               <Typography
                 sx={{ color: "#000" }}
                 variant="body2"
                 color="text.secondary"
               >
-                alymbek07@gmail.com
+                {user?.email || "No email"}
               </Typography>
             </Box>
           </Box>
@@ -111,7 +116,12 @@ export default function ProfileMenu() {
         </MenuItem>
         <Divider />
 
-        <MenuItem onClick={handleClose} sx={{ color: "red" }}>
+        <MenuItem
+          onClick={async () => {
+            await signOut(auth), useAuthStore.getState().logout(), handleClose;
+          }}
+          sx={{ color: "red" }}
+        >
           <ListItemIcon>
             <LogoutIcon fontSize="small" sx={{ color: "red" }} />
           </ListItemIcon>

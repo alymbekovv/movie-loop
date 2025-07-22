@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding-block: 7px;
+  padding-block: 20px;
   z-index: 100;
   transition: transform 0.3s ease;
   backdrop-filter: blur(2px);
@@ -34,6 +34,28 @@
       .star {
         font-size: 23px;
         color: #fff;
+      }
+      .signUp {
+        padding: 8px 16px;
+        background-color: transparent;
+        color: #fff;
+        border: 1.5px solid #fff;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          transform: scale(1.05);
+          border-color: #00bfff;
+          color: #00bfff;
+        }
+
+        &:active {
+          transform: scale(0.97);
+          opacity: 0.9;
+        }
       }
     }
   }

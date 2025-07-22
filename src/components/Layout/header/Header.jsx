@@ -6,7 +6,10 @@ import { IconButton } from "@mui/material";
 import BookmarksIcon from "@mui/icons-material/Bookmarks";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../../../store/useAuthStore";
 const Header = () => {
+  const user = useAuthStore((state) => state.user);
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -50,9 +53,13 @@ const Header = () => {
                 <BookmarksIcon className={scss.star} />
               </Badge>
             </IconButton>
-            <Link to="/signUp">
+            {user ? (
               <ProfileMenu />
-            </Link>
+            ) : (
+              <Link to="/signUp">
+                <button className={scss.signUp}>Sign up</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
