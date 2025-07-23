@@ -7,7 +7,7 @@ import notImg from "../../../../assets/Снимок экрана 2025-06-21 в 1
 const ActorsDetails = () => {
   const { actorsBio, getActorBio, getActorsMovies, actorMovies } =
     useMoviesStore();
-  const { id } = useParams();
+  const { id, type } = useParams();
   const [showFullBio, setShowFullBio] = useState(false);
 
   const biographyWords = actorsBio.biography?.split("") || [];
@@ -16,7 +16,7 @@ const ActorsDetails = () => {
 
   useEffect(() => {
     if (id) getActorBio(id);
-    getActorsMovies(id);
+    getActorsMovies(id, type);
   }, [id]);
 
   return (
@@ -60,7 +60,9 @@ const ActorsDetails = () => {
               <div className={scss.fameFor_list}>
                 {actorMovies.map((item) => (
                   <div key={item.id}>
-                    <Link to={`/details/${item.id}`}>
+                    <Link
+                      to={`/details/${item.media_type || "movie"}/${item.id}`}
+                    >
                       <img
                         src={
                           item.backdrop_path
